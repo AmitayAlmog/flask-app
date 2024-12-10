@@ -40,6 +40,20 @@ CREATE TABLE IF NOT EXISTS images (
 )
 """)
 
+mycursor.execute("""
+CREATE TABLE IF NOT EXISTS visitor_count (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    count INT NOT NULL DEFAULT 0
+)
+""")
+
+mycursor.execute("SELECT COUNT(*) FROM visitor_count")
+if mycursor.fetchone()[0] == 0:
+    mycursor.execute("INSERT INTO visitor_count (count) VALUES (0)")
+    mydb.commit()
+
+
+
 mycursor.execute("SELECT COUNT(*) FROM images")
 if mycursor.fetchone()[0] == 0:
     initial_gifs = [
@@ -52,13 +66,17 @@ if mycursor.fetchone()[0] == 0:
 
 @app.route("/")
 def index():
-   
+    mycursor.execute("UPDATE visitor_count SET count = count + 1 WHERE id = 1")
+    mydb.commit()
+
+    mycursor.execute("SELECT count FROM visitor_count WHERE id = 1")
+    visitor_count = mycursor.fetchone()[0]
+
     mycursor.execute("SELECT url FROM images")
     gifs = [row[0] for row in mycursor.fetchall()]
 
     url = random.choice(gifs) if gifs else None
-    return render_template("index.html", url=url)
-
+    return render_template("index.html", url=url, visitor_count=visitor_count)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

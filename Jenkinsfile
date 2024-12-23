@@ -10,7 +10,7 @@ pipeline{
         stage("build docker image"){
             steps{
                 echo "building docker image"
-                sh "docker build -t amitay/flask-app ."
+                sh "sudo docker build -t amitay/flask-app ."
                  
             }
         }

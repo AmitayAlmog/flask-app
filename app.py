@@ -59,6 +59,7 @@ if mycursor.fetchone()[0] == 0:
     initial_gifs = [
         ("https://i.pinimg.com/originals/29/2a/50/292a50994d357e1884373ee8bf362562.gif",),
         ("https://i.pinimg.com/originals/2f/e4/67/2fe467f5a4350854f383c2185f1da571.gif",),
+        ("https://media.tenor.com/iY7tFslwb0YAAAAe/ryan-gosling-confused-gif.png",),
     ]
     mycursor.executemany("INSERT INTO images (url) VALUES (%s)", initial_gifs)
     mydb.commit()

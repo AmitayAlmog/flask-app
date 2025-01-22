@@ -3,6 +3,7 @@ version: "3.8"
 services:
   web:
     build: .
+    image: amitay7473/flaskapp
     ports:
       - "8080:5000"  
     environment:

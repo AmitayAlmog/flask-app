@@ -5,6 +5,7 @@ provider "google" {
 =======
 provider "aws" {
   region = "us-east-1" # Change to your preferred region, 6, 25/1 deploy.
+<<<<<<< HEAD
 >>>>>>> ddb05319b4857cb0125430e0aaf5fac16212995f
 }
 terraform {
@@ -25,8 +26,22 @@ terraform {
     bucket  = "flaski"
     prefix  = "terraform/state"
   }
+=======
+>>>>>>> ddb05319b4857cb0125430e0aaf5fac16212995f
 }
+terraform {
+  backend "s3" {
+    bucket         = "amitays-bucket"   # Your existing S3 bucket name
+    key            = "terraform.tfstate"  # State file location inside the bucket
+    region         = "us-east-1"  # Update if your bucket is in a different region
+    encrypt        = true
+  }
+}
+resource "aws_security_group" "flask_sg" {
+  name        = "flask-sg"
+  description = "Security group for Flask app"
 
+<<<<<<< HEAD
 # Create a GKE cluster
 resource "google_container_cluster" "primary" {
   name               = var.cluster_name
@@ -72,6 +87,8 @@ resource "google_container_node_pool" "primary_nodes" {
 
   depends_on = [google_container_cluster.primary]
 =======
+=======
+>>>>>>> ddb05319b4857cb0125430e0aaf5fac16212995f
   lifecycle {
     create_before_destroy = true
   }
@@ -133,5 +150,8 @@ resource "aws_instance" "apache_server" {
 output "instance_public_ip" {
   value       = aws_instance.apache_server.public_ip
   description = "Public IP of the EC2 instance"
+<<<<<<< HEAD
+>>>>>>> ddb05319b4857cb0125430e0aaf5fac16212995f
+=======
 >>>>>>> ddb05319b4857cb0125430e0aaf5fac16212995f
 }

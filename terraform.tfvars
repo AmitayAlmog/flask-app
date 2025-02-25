@@ -1,0 +1,5 @@
+project_id    = "banded-encoder-451312-h7"
+region        = "us-central1"
+cluster_name  = "amitay-flask-cluster"
+node_pool_name = "amitay-node-pool"
+bucket_name   = "flaski"

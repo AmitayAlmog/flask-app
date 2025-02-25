@@ -1,64 +1,57 @@
-provider "aws" {
-  region = "us-east-1" # Adjust to your desired region
+provider "google" {
+  project = var.project_id
+  region  = var.region
 }
 
-resource "aws_security_group" "apache_sg" {
-  name        = "apache-server-sg"
-  description = "Allow HTTP and SSH access"
-
-  ingress {
-    description = "Allow HTTP"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description = "Allow SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    description = "Allow all outbound traffic"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "Apache-SG"
+terraform {
+  backend "gcs" {
+    bucket  = "flaski"
+    prefix  = "terraform/state"
   }
 }
 
-resource "aws_instance" "apache_server" {
-  ami           = "ami-0df8c184d5f6ae949" 
-  instance_type = "t2.micro"
-  key_name      = "key-gen"
-  security_groups = [aws_security_group.apache_sg.name]
+# Create a GKE cluster
+resource "google_container_cluster" "primary" {
+  name               = var.cluster_name
+  location           = var.region
+  initial_node_count = 1
 
-  user_data = <<-EOF
-              #!/bin/bash
-              yum update -y
-              yum install -y httpd
-              systemctl enable httpd
-              systemctl start httpd
-              EOF
+  deletion_protection     = false
+  remove_default_node_pool = true
 
-  tags = {
-    Name = "Apache-Server"
+  network    = "default"
+  subnetwork = "default"
+
+  logging_service    = "logging.googleapis.com/kubernetes"
+  monitoring_service = "monitoring.googleapis.com/kubernetes"
+
+  addons_config {
+    http_load_balancing {
+      disabled = false
+    }
   }
 }
 
-output "public_ip" {
-  value = aws_instance.apache_server.public_ip
-}
+# Create a node pool with auto-scaling enabled
+resource "google_container_node_pool" "primary_nodes" {
+  name     = var.node_pool_name
+  cluster  = google_container_cluster.primary.name
+  location = var.region
+  node_count = 1
 
-resource "local_file" "output_ip" {
-  content  = aws_instance.apache_server.public_ip
-  filename = "public_ip.txt"
+  node_config {
+    machine_type = "e2-medium"
+    disk_size_gb = 15
+    disk_type    = "pd-standard"
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform",
+    ]
+  }
+
+  management {
+    auto_upgrade = true
+    auto_repair  = true
+  }
+
+  depends_on = [google_container_cluster.primary]
 }

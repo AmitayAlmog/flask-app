@@ -1,0 +1,20 @@
+flaskApp:
+  image: amitayalmog/flask-app:latest
+  replicas: 2
+  containerPort: 8080
+
+mysql:
+  image: mysql:8.0
+  containerPort: 3307
+  storage: 1Gi
+  rootPassword: rootpassword
+  database: gifdatabase
+  user: user
+  password: password
+  host: db
+
+appConfig:
+  dbHost: db
+  dbUser: user
+  dbName: gifdatabase
+  port: 8080

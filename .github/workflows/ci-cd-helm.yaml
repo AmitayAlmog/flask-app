@@ -84,14 +84,13 @@ jobs:
 
             - name: Package Helm Chart
               run: |
-                cd flask-app/charts
+                cd charts
                 helm package helm --destination ..
                 cd ..
                 ls -lrta
 
             - name: Update Helm Repo Index # searches for tar.gz file in same dir.
               run: |
-                cd flask-app
                 helm repo index --url https://amitayalmog.github.io/helm-flaskgif .
                 ls -lrta
 
@@ -100,7 +99,6 @@ jobs:
                 HELM_REPO_PAT: ${{ secrets.HELM_REPO_PAT }} 
               run: |
                 set -x
-                cd flask-app
                 git clone https://${HELM_REPO_PAT}@github.com/amitayalmog/helm-flaskgif.git helmrepo
                 cd helmrepo
                 pwd

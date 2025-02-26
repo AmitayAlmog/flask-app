@@ -52,7 +52,7 @@ jobs:
       - name: Start the application with Docker Compose
         working-directory: flask-app
         run: | 
-            docker-compose --env-file .env -f docker-compose.yml up -d
+            docker-compose --env-file .env -f docker-compose.yaml up -d
             sleep 10 # Allow time for the application to start
 
       - name: Test the application with curl

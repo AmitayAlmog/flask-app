@@ -5,7 +5,7 @@ provider "google" {
 
 terraform {
   backend "gcs" {
-    bucket  = "docker-badger-gifs"
+    bucket  = "flaski"
     prefix  = "terraform/state"
   }
 }

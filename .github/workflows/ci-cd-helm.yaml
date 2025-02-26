@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: amitayalmog/flask-app
+  IMAGE_NAME: amitay7473/flask-app
   IMAGE_TAG: 0.0.${{ github.run_number }}
 
 jobs:

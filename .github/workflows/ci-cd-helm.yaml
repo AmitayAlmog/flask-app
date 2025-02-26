@@ -151,12 +151,10 @@ jobs:
             
       - name: Terraform Init
         run: |
-          cd flask-app/terraform-gke-k8s
           terraform init
   
       - name: Terraform Apply # update cluster infrastructure.
         run: |
-          cd flask-app/terraform-gke-k8s
           terraform apply -auto-approve
   
       - name: Install Helm

@@ -1,5 +1,5 @@
 flaskApp:
-  image: amitayalmog/flask-app:latest
+  image: amitay7473/flask-app:latest
   replicas: 2
   containerPort: 8080
 

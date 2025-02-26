@@ -39,18 +39,17 @@ jobs:
     
       - name: Create .env file
         run: |
-         echo "MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}" >> flask-app/.env
-         echo "MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }}" >> flask-app/.env
-         echo "MYSQL_USER=${{ secrets.MYSQL_USER }}" >> flask-app/.env
-         echo "MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}" >> flask-app/.env
+         echo "MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}" >> .env
+         echo "MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }}" >> .env
+         echo "MYSQL_USER=${{ secrets.MYSQL_USER }}" >> .env
+         echo "MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}" >> .env
          echo "PORT=${{ secrets.PORT }}" >> flask-app/.env
-         echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> flask-app/.env
-         echo "DB_NAME=${{ secrets.DB_NAME }}" >> flask-app/.env
-         echo "DB_HOST=${{ secrets.DB_HOST }}" >> flask-app/.env
-         echo "DB_USER=${{ secrets.DB_USER }}" >> flask-app/.env      
+         echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+         echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
+         echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
+         echo "DB_USER=${{ secrets.DB_USER }}" >> .env      
     
       - name: Start the application with Docker Compose
-        working-directory: flask-app
         run: | 
             docker-compose --env-file .env -f docker-compose.yaml up -d
             sleep 10 # Allow time for the application to start

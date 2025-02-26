@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: yonihavasov/flask-app
+  IMAGE_NAME: amitayalmog/flask-app
   IMAGE_TAG: 0.0.${{ github.run_number }}
 
 jobs:
@@ -57,7 +57,7 @@ jobs:
 
       - name: Test the application with curl
         run: |
-          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:5001)
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)
           if [ "$RESPONSE" -ne 200 ]; then
             echo "Test failed with HTTP status $RESPONSE"
             exit 1
@@ -79,7 +79,7 @@ jobs:
 
             - name: Update Helm Chart Version
               run: |
-                cd flask-app/charts/helm
+                cd charts/helm
                 sed -i "s/version: .*/version: 1.0.${{ github.run_number }}/g" ./Chart.yaml
                 echo "# this file was modified by a ci to update helm version tagging" >> ./Chart.yaml
 
@@ -93,7 +93,7 @@ jobs:
             - name: Update Helm Repo Index # searches for tar.gz file in same dir.
               run: |
                 cd flask-app
-                helm repo index --url https://yonatanhavasov.github.io/helm-flaskgif .
+                helm repo index --url https://amitayalmog.github.io/helm-flaskgif .
                 ls -lrta
 
             - name: Push helm chart ( tgz and index.yaml ) to helm repo
@@ -102,7 +102,7 @@ jobs:
               run: |
                 set -x
                 cd flask-app
-                git clone https://${HELM_REPO_PAT}@github.com/yonatanhavasov/helm-flaskgif.git helmrepo
+                git clone https://${HELM_REPO_PAT}@github.com/amitayalmog/helm-flaskgif.git helmrepo
                 cd helmrepo
                 pwd
                 sleep 3
@@ -169,7 +169,7 @@ jobs:
   
       - name: Add and Update Helm Repository
         run: |
-          helm repo add flaskrepo https://yonatanhavasov.github.io/helm-flaskgif
+          helm repo add flaskrepo https://amitayalmog.github.io/helm-flaskgif
           helm repo update
           helm search repo flaskrepo --versions
   

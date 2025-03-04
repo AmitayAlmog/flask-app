@@ -18,6 +18,6 @@ data:
         url VARCHAR(255) NOT NULL
     );
     INSERT INTO images (url) VALUES
-    ('https://i.pinimg.com/originals/29/2a/50/292a50994d357e1884373ee8bf362562.gif'),
-    ('https://i.pinimg.com/originals/2f/e4/67/2fe467f5a4350854f383c2185f1da571.gif'),
-    ('https://media.tenor.com/iY7tFslwb0YAAAAe/ryan-gosling-confused-gif.png');
+    ('https://tenor.com/view/ryan-gosling-ryan-gosling-drive-flip-gif-5480671772097000575'),
+    ('https://tenor.com/view/gosling-blade-runner-gosling-angry-gosling-pokerface-pokerface-gif-3757061166121710535'),
+    ('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWQ3bWZwbWJpZ3VrcmNrM3g0eTRvaWNtZjJrcmswZ3lhMTA3dGwxYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aoTKz5O4dE27S/giphy.gif');

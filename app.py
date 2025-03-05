@@ -57,8 +57,8 @@ if mycursor.fetchone()[0] == 0:
 mycursor.execute("SELECT COUNT(*) FROM images")
 if mycursor.fetchone()[0] == 0:
     initial_gifs = [
-        ("https://tenor.com/view/ryan-gosling-ryan-gosling-drive-flip-gif-5480671772097000575",),
-        ("https://tenor.com/view/gosling-blade-runner-gosling-angry-gosling-pokerface-pokerface-gif-3757061166121710535",),
+        ("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTEwdjA3enFrMnJvZnk0a2VrbDZnMGN2Z3FmanMwOHR0ZmxreTNmMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pMaPGoGE6LvS8/giphy.gif",),
+        ("https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3Ixb25kcGtqam1jdmh5NzZiZmNwYzQ0bjRxZGp0ajBzbmV2NTI3eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6EhJzC2UQLRMT2zm/giphy.gif",),
         ("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWQ3bWZwbWJpZ3VrcmNrM3g0eTRvaWNtZjJrcmswZ3lhMTA3dGwxYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aoTKz5O4dE27S/giphy.gif",),
     ]
     mycursor.executemany("INSERT INTO images (url) VALUES (%s)", initial_gifs)

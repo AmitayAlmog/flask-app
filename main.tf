@@ -7,7 +7,6 @@ terraform {
   backend "gcs" {
     bucket  = "flaski"
     prefix  = "terraform/state"
-    disable_locking = true
   }
 }
 

@@ -98,4 +98,4 @@ Feel free to submit pull requests or report issues!
 MIT License
 
 
-![Untitled Diagram](https://github.com/user-attachments/assets/32e8f3d0-cdb1-4419-914c-b67cabf51ade)
+![Untitled Diagram drawio (1)](https://github.com/user-attachments/assets/e51a4cd1-b9e9-4ed5-9f61-3b53f0a50104)

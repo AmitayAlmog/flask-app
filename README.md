@@ -36,8 +36,8 @@ cd flask-gif-app
 
 ### 2. Build and Push Docker Image
 ```bash
-docker build -t gcr.io/YOUR_PROJECT_ID/flask-app:latest .
-docker push gcr.io/YOUR_PROJECT_ID/flask-app:latest
+docker build -t gcr.io/banded-encoder-451312-h7/flask-app:latest .
+docker push gcr.io/banded-encoder-451312-h7/flask-app:latest
 ```
 
 ### 3. Deploy Database

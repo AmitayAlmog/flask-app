@@ -97,5 +97,5 @@ Feel free to submit pull requests or report issues!
 ## License
 MIT License
 
-https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#G1qDVL8Bx5MUrzF-xAjC1MBnS88a5_yCQk
 
+![Untitled Diagram](https://github.com/user-attachments/assets/32e8f3d0-cdb1-4419-914c-b67cabf51ade)

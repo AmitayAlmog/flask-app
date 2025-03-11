@@ -30,14 +30,14 @@ Before running the project, ensure you have the following installed:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/flask-gif-app.git
+git clone https://github.com/amitayalmog/flask-app.git
 cd flask-gif-app
 ```
 
 ### 2. Build and Push Docker Image
 ```bash
-docker build -t gcr.io/YOUR_PROJECT_ID/flask-gif-app:latest .
-docker push gcr.io/YOUR_PROJECT_ID/flask-gif-app:latest
+docker build -t gcr.io/YOUR_PROJECT_ID/flask-app:latest .
+docker push gcr.io/YOUR_PROJECT_ID/flask-app:latest
 ```
 
 ### 3. Deploy Database

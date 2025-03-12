@@ -30,14 +30,14 @@ Before running the project, ensure you have the following installed:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/flask-gif-app.git
+git clone https://github.com/amitayalmog/flask-app.git
 cd flask-gif-app
 ```
 
 ### 2. Build and Push Docker Image
 ```bash
-docker build -t gcr.io/YOUR_PROJECT_ID/flask-gif-app:latest .
-docker push gcr.io/YOUR_PROJECT_ID/flask-gif-app:latest
+docker build -t gcr.io/banded-encoder-451312-h7/flask-app:latest .
+docker push gcr.io/banded-encoder-451312-h7/flask-app:latest
 ```
 
 ### 3. Deploy Database
@@ -91,8 +91,11 @@ terraform force-unlock -force <LOCK_ID>
 ```
 
 ## Contributing
+
 Feel free to submit pull requests or report issues!
 
 ## License
 MIT License
 
+
+![Untitled Diagram drawio (1)](https://github.com/user-attachments/assets/e51a4cd1-b9e9-4ed5-9f61-3b53f0a50104)
